@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Happy Birthday!</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300&display=swap');
+		*{margin:0px;padding:0px;box-sizing:border-box;font-family:Calibri;outline:none;}
+		#background{height:100vh;width:100vw;display:grid;place-items:center;}
+		input{width:100%;padding:5px;margin:5px;border:ridge 1px #000000;}
+		input[type="submit"]{background-image:linear-gradient(#0099ff,#0066f6);border:none;color:#ffffff;}
+		#giftdiv{display:none;place-items:center;}
+		#wishes{padding:5px;font-size:20px;font-family: 'Pacifico', cursive;}
+		#msg{font-family: 'MuseoModerno', cursive;}
+		#giftnote{font-family: 'MuseoModerno', cursive;}
+		#quotes{background-color:#ff6fff;color:#ffffff;font-family: 'Cormorant Upright', serif;width:80%;font-size:18px;padding:5px;}
+		#credits{width:100%;position:fixed;bottom:0px;text-align:center;background-color:#000000;color:#ffffff;}
+	</style>
+	<script>
+		function wish() {
+		const name =document.getElementById("name").value;
+		const surname =document.getElementById("surname").value;
+		document.getElementById("onlyform").style.display="none";
+		document.getElementById("giftdiv").style.display="grid";
+		document.getElementById("wishes").innerHTML=`Happy Birthday ${name} ${surname}.`;
+		document.title=`Happy Birthday ${name} ${surname}!`;
+		return false
+		}
+		function gift(){
+			var giftindex=Math.floor(Math.random() * 4) ;
+			var gifts=['airpods.jpg','iphone11.jpg','cycle.jpg','watch.jpg'];
+			document.getElementById("varimages").src=gifts[giftindex];
+			var giftname;
+			switch(giftindex){
+				case 0 : giftname="Airpods"; break;
+				case 1 : giftname="I Phone 11"; break;
+				case 2 : giftname="Cycle"; break;
+				case 3 : giftname="Watch"; break;
+			}
+		   document.getElementById("giftnote").innerHTML=`You got a ${giftname} as your gift!`;
+		}
+	</script>
+</head>
+<body>
+<div id="background">
+	<div id="centerdiv">
+		<form id="onlyform" onsubmit="return wish()">
+			<input type="text" id="name" placeholder="Enter your name" required>
+			<input type="text" id="surname" placeholder="Enter your surname" required>
+			<input type="submit" id="send" value="Enter!">
+		</form>
+		<div id="giftdiv">
+			<p id="wishes"></p><br>
+			<p id="msg">Click on the Gift Box to claim your gift.</p>
+			<img src="giftbox.jpg" id="varimages" onclick="gift()">
+			<p id="giftnote"></p><br>
+			<p id="quotes">Sending you smiles for every moment of your special day…Have a wonderful time and a very happy birthday!</p>
+		</div>
+	</div>
+	<p id="credits">Created by Debarshi Pathak.</p>
+</div>
+</body>
+</html>
